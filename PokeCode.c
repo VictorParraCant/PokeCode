@@ -15,6 +15,7 @@ void Squirtle ();
 int movSquir ();
 void Bulbasaur ();
 int movBulba ();
+int ataquepoke (int ataque);
 
 
 // Funion Principal
@@ -23,7 +24,7 @@ int main (int argc, char *argv[]) {
   //variables
   int opcion, vidaUsuario, vidaMaquina;
   int charmanderVida, charmanderataque, squirtleataque, squirtleVida;
-
+  char pokemonUsuario, pokemonManquina;
   // Inicialización de la semilla
   srand(time(NULL));
 
@@ -100,17 +101,22 @@ int eligePokemon () {
       //Si no es Bulbasaur
       if(opcion == 0){
         //Si es Charmander
+        pokemonUsuario == Charmander;
+        pokemonMaquina == Squirtle;
         printf ("\n- Charmander siempre es una buena opcion, espero que estes preparado.");
+        system ("cls");
+        dominguero ();
+        pausa ();
         Charmander ();
         pausa ();
        // vidaUsuario = charmanderVida;
         movChar ();
-        //Dominguero
-        system ("cls");
-        dominguero ();
-        pausa ();
+        ataquepoke (int ataque);
+
       } else {
           //Es Squirtle
+          pokemonUsuario == Squirtle;
+          pokemonMaquina == Bulbasaur;
           printf ("\n- Squirtle, no esta mal, espero que estes preparado.");
           Squirtle ();
           pausa ();
@@ -123,10 +129,14 @@ int eligePokemon () {
 
     } else {
         // As elegido a Bulbasaur
-        printf ("\n - Te dije que solo tenias una oportunidad, y coges a Bulbasaur!?");
-        printf ("\n - Nadie coge a Bulbasaur! ese lleva en la pokeball casi una decada,");
-        printf ("\n ni si quiera se si esta vivo.");
-        printf ("\n - En fin, suerte en tu camino, te hara falta...");
+        pokemonUsuario == Bulbasaur;
+        pokemonMaquina == Charmander;
+        printf ("\n (-o-)============================(-o-)==============================(-o-) ");
+        printf ("\n || - Te dije que solo tenias una oportunidad, y coges a Bulbasaur!?    ||");
+        printf ("\n || - Nadie coge a Bulbasaur! ese lleva en la pokeball casi una decada, ||");
+        printf ("\n ||   ni si quiera se si esta vivo.                                     ||");
+        printf ("\n || - En fin, suerte en tu camino..., te hara falta                     ||");
+        printf ("\n  ======================================================================= ");
         Bulbasaur();
         pausa ();
         //Dominguero
@@ -158,20 +168,6 @@ int pedirNumero (int min , int max) {
 	return opcion;
 }
 
-// Función obtenerNumeroAleatorio
-// Función para obtener un número aleatorio entre un mínimo y un
-// máximo dado
-// Esta funcion necesita para funcionar dos argumentos int de entrada, y nos
-// devolvera un numero aleatorio.
-int obtenerNumeroAleatorio (int minimo, int maximo) {
- // Declaración de variables
- int numero;
- // Número aleatorio entre el máximo y el mínimo
- numero = (rand() % (maximo - minimo + 1)) + minimo;
- return numero;
-}
-
-
 
 // Función pausa
 // Crea una pausa en el programa, aprovechando la orden system ("pause");
@@ -182,11 +178,14 @@ void pausa () {
 }
 
 void dominguero () {
-  printf ("\n\n\t Sales del laboratorio del profesor Oak");
-  printf ("\n\t Vas caminando tranquilamente cuando de repente...");
-  printf ("\n\n - Eh! tu! Que estas mirando? Quieres pelea?");
-  printf ("\n\n\t Tu rezas para que no sea un dominguero, pero estan por todos lados,");
-  printf ("\n\t es imposible librarse de ellos, asi que te preparas para la batalla");
+  printf ("\n (-o-)============================(-o-)===============================(-o-) ");
+  printf ("\n || Sales del laboratorio del profesor Oak                                ||");
+  printf ("\n || Vas caminando tranquilamente cuando de repente...                     ||");
+  printf ("\n ||                                                                       ||");
+  printf ("\n || - Eh! tu! Que estas mirando? Quieres pelea?                           ||");
+  printf ("\n || Tu rezas para que no sea un dominguero, pero estan por todos lados,   ||");
+  printf ("\n || es imposible librarse de ellos, asi que te preparas para la batalla   ||");
+  printf ("\n  ========================================================================== ");
 }
 
 int movChar () {
@@ -200,8 +199,7 @@ int movChar () {
   printf ("\n =========================== ");
   printf ("\n||    0.- Huir             ||");
   printf ("\n =========================== ");
-  pedirNumero(0,4);
-  scanf ("%d", &ataque);
+  ataque = pedirNumero(0,4);
   return ataque;
 }
 
@@ -241,6 +239,7 @@ void Charmander () {
   printf ("\n       \"\"--'---\"\"\"\"\"\'        `' '! |! / ");
   printf ("\n                               `\" \" -' ");
   printf ("\n ");
+  printf ("\n (-o-)================== Charmander! ==================(-o-) ");
 }
 
 int movSquir () {
@@ -254,8 +253,7 @@ int movSquir () {
   printf ("\n =========================== ");
   printf ("\n||    0.- Huir             ||");
   printf ("\n =========================== ");
-  pedirNumero(0,4);
-  scanf ("%d", &ataque);
+  ataque = pedirNumero(0,4);
   return ataque;
 }
 
@@ -295,6 +293,7 @@ void Squirtle () {
   printf ("\n                 7____,,..--'      /          | ");
   printf ("\n                                   `---.__,--.' ");
   printf ("\n");
+  printf ("\n (-o-)================== Squirtle! ==================(-o-) ");
 }
 
 int movBulba () {
@@ -344,26 +343,71 @@ void Bulbasaur () {
   printf ("\n  '-.__ __ _,','    '`-..___;-...__   ,.'\\ ____.___.' ");
   printf ("\n  `\"^--'..'   '-`-^-'\"--    `-^-'`.''\"\"\"\"\"`.,^.`.--'  ");
   printf ("\n ");
+  printf ("\n (-o-)================== Bulbasaur! ==================(-o-) ");
 
 }
 
-/*
-int ataquepoke (int ataque) {
-  switch (){
-    case 0:
+// Función obtenerNumeroAleatorio
+// Función para obtener un número aleatorio entre un mínimo y un
+// máximo dado
+// Esta funcion necesita para funcionar dos argumentos int de entrada, y nos
+// devolvera un numero aleatorio.
+int obtenerNumeroAleatorio (int minimo, int maximo) {
+ // Declaración de variables
+ int numero;
+ // Número aleatorio entre el máximo y el mínimo
+ numero = (rand() % (maximo - minimo + 1)) + minimo;
+ return numero;
+}
 
+int ataquepoke (int ataque) {
+  int turno = obtenerNumeroAleatorio(0,1);
+
+  switch (ataque){
+    case 0:
+      printf ("\n (-o-)============================(-o-)==============================(-o-) ");
+      printf ("\n || Salistes huyendo del combate, ves como el Dominguero se rie de ti   || ");
+      printf ("\n || mientras se te escapa un lagrima...                                 || ");
+      printf ("\n (-o-)===============================================================(-o-) ");
+      printf ("\n || \tNo estas preparado para el mundo Pokemon.                         || ");
+      printf ("\n (-o-)============================(-o-)==============================(-o-) ");
     break;
     case 1:
-
+      if (turno=0){
+        printf ("%s ataco", pokemonUsuario);
+      }
+      else {
+        printf ("%s ataco", pokemonMaquina);
+      }
     break;
     case 2:
-
+      if (turno=0){
+        printf ("");
+      }
+      else {
+        printf ("");
+      }
     break;
     case 3:
-
+      if (turno=0){
+        printf ("");
+      }
+      else {
+        printf ("");
+      }
     break;
     case 4:
-
+      if (turno=0){
+        printf ("");
+      }
+      else {
+        printf ("");
+      }
     break;
   }
-} */
+  return ataque;
+}
+int combate () {
+  int DanoAtaque =  obtenerNumeroAleatorio(1,10);
+
+}
