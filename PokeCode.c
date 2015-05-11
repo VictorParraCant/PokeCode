@@ -3,6 +3,8 @@
 #include <time.h>
 
 //Declaracion de funciones
+int menu ();
+int pedirNumero (int min, int max);
 void pausa ();
 void dominguero ();
 int movChar ();
@@ -24,18 +26,10 @@ int main (int argc, char *argv[]) {
   squirtleVida = 120;
   squirtleataque = 25;
   opcion = 1;
+  
   for (i = 0; opcion != 0; i++) {
 	//Menu del juego
-  system ("cls");
-  printf ("\t\t\t\tPokemon!");
-  printf ("\n\t\t\t Defiende tu honor");
-  printf ("\n\t ======(-o-)======");
-  printf ("\n\t||  1.- Jugar.    ||");
-  printf ("\n\t||  0.- Salir.    ||");
-  printf ("\n\t =================");
-  // Jugar o Salir
-  printf ("\n\nIntroduzca su opcion: ");
-  scanf ("%d", &opcion);
+
 
     if (opcion != 0) {
       //Bienvenida
@@ -100,6 +94,31 @@ int main (int argc, char *argv[]) {
 }
 
 //FUNCIONES
+int menu (){
+	int opcion;
+	system ("cls");
+  printf ("\t\t\t\tPokemon!");
+  printf ("\n\t\t\t Defiende tu honor");
+  printf ("\n\t ======(-o-)======");
+  printf ("\n\t||  1.- Jugar.    ||");
+  printf ("\n\t||  0.- Salir.    ||");
+  printf ("\n\t =================");
+  // Jugar o Salir
+  printf ("\n\nIntroduzca su opcion: ");
+  opcion = pedirNumero (0,1);
+	return opcion;
+}
+int pedirNumero (intmin , int max){
+	int opcion = max+1;
+	for (;(opcion < min) || (opcion > max);) {
+		scanf("%d", &opcion);
+		if ((opcion < min || (opcion > max)){
+			printf("Error, seleccione un numero valido")
+		}
+	}
+	return opcion;
+}
+
 void pausa () {
   printf ("\n\n");
   system ("pause");
