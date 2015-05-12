@@ -7,39 +7,40 @@ int menu ();
 void bienvenida ();
 int eligePokemon ();
 int pedirNumero (int min, int max);
+int obtenerNumeroAleatorio(int min, int max);
 void pausa ();
 void dominguero ();
 void Charmander ();
-int movChar ();
 void Squirtle ();
-int movSquir ();
 void Bulbasaur ();
+int movChar ();
+int movSquir ();
 int movBulba ();
 int movimientos();
 void Combate (int pokemonUsuario, int pokemonMaquina);
 void perdedor();
 void ganador();
 
-
 // Funion Principal
 int main (int argc, char *argv[]) {
   // Cambiamos el color de fondo y del texto de la cmd
   system ("color F0");
-
-  // Inicialización de la semilla
+  // Inicialización de la semilla.
   srand(time(NULL));
 
   int opcionMenu = 1;
   for (;opcionMenu != 0;) {
-	   //Menu del juego
+	   //Muestra el menu del juego.
     opcionMenu = menu();
       if (opcionMenu != 0) {
-        //En las siguentes funciones: Introduccion a la historia, nombre de usuario y eleccion de pokemon
+        //En las siguentes funciones: Introduccion a la historia, nombre de usuario y eleccion de pokemon.
         bienvenida ();
-        eligePokemon ();
-        //Combate pokemon
-        Combate (Charmander,Squirtle);
-
+        // Esta variable guarda el pokemon que elige el jugador.
+        int query_pokemonUsuario = eligePokemon ();
+        // Esta guarda el un pokemon aleatorio para la maquina.
+        int query_pokemonMaquina = obtenerNumeroAleatorio(0,2);
+        // En esta funcion comienza el bucle que da sentido al juego, como su nombre indica es el combate Pokemon.
+        Combate ( query_pokemonUsuario, query_pokemonMaquina );
       }
     }
     // Pausa y final del programa.
@@ -49,10 +50,10 @@ int main (int argc, char *argv[]) {
 
 
 
-// FUNCIONES: Descripcion y uso de cada una de las funciones realizadas en el programa
-int menu (){
+// FUNCIONES: Descripcion y uso de cada una de las funciones realizadas en el programa.
+int menu () {
 	int opcion;
-  // Limpieza de pantalla y presentación de menú
+  // Limpieza de pantalla, pantalla de bienvenida y presentación de menú.
 	system ("cls");
   printf ("\n Por favor, Expanda su pantalla para mejorar la experiencia del juego.");
   printf ("\n\n\n                                  .;:**'                           ");
@@ -74,91 +75,103 @@ int menu (){
   printf ("\n\t\t\t =================");
   printf("\n");
 
-  // Para la lectura de la opción del usuario usamos otra funcion
+  // Para la lectura de la opción del usuario usamos otra funcion.
   opcion = pedirNumero (0,1);
 	return opcion;
 }
 
 void bienvenida () {
   char nombre[9];
-  //Bienvenida e introduccion al juego
+  //Bienvenida e introduccion al juego.
   system ("cls");
-  printf ("\n (-o-)===============================(-o-)=================================(-o-) ");
-  printf ("\n || Bienvenido, soy el profesor Oak y estoy aqui para ayudarte a ser un buen  ||");
-  printf ("\n || maestro Pokemon o por lo menos intentar que no seas un 'noob' de la vida  ||");
+  printf ("\n (-o-)==============================(-o-)================================(-o-) ");
+  printf ("\n || Bienvenido, soy el profesor Oak y estoy aqui para ayudarte a ser un buen ||");
+  printf ("\n || maestro Pokemon o por lo menos intentar que no seas un 'noob' de la vida ||");
   //Seleccion del nombre del jugador
-  printf ("\n || Antes de nada, recuerdame tu nombre.                                      ||");
-  printf ("\n  ============================================================================= ");
-  printf ("\n\n (-o-)===============================(-o-)===============================(-o-) ");
-  printf ("\n || Introduce tu nombre (maximo 9 caracteres): ");
-  printf ("                              ||");
+  printf ("\n || Antes de nada, recuerdame tu nombre.                                     ||");
+  printf ("\n  ============================================================================ ");
+
+  printf ("\n\n Introduce tu nombre (maximo 9 caracteres): ");
   scanf ("%s", &nombre);
-  printf ("\n  ============================================================================== ");
-  printf ("\n\n (-o-)============================(-o-)==============================(-o-) ");
-  printf ("\n || De acuerdo, %s ha llegado el momento que estabas esperando.           ||",nombre);
-  printf ("\n || Solo tendras una oportunidad para elegir al Pokemon que te            ||");
-  printf ("\n || seguira el resto de tu vida.                                          ||");
-  printf ("\n  ========================================================================= ");
+
+  printf ("\n\n (-o-)==========================(-o-)============================(-o-) ");
+  printf ("\n || De acuerdo, %s ha llegado el momento que estabas esperando.       ||",nombre);
+  printf ("\n || Solo tendras una oportunidad para elegir al Pokemon que te       ||");
+  printf ("\n || seguira el resto de tu vida.                                     ||");
+  printf ("\n  ====================================================================== ");
 }
 
 int eligePokemon () {
-  int pokemonUsuario, pokemonMaquina;
+  int pokemonUsuario;
   int opcion;
-
-  //Elegir un Pokemon, probablemente la decision mas importante del juego ;)
+  // Esta funcion nos sirve para saber que pokemon a elegido el usuario, esta sera guardad en una variable
+  // que mas tarde se usara para saber que movimientos ha de mostrar por pantalla.
   printf ("\n\n\t\t  =======(-o-)=======");
   printf ("\n\t\t||  0.- Charmander. ||");
   printf ("\n\t\t||  1.- Squirtle.   ||");
   printf ("\n\t\t||  2.- Bulbasaur.  ||");
   printf ("\n\t\t ====================");
   printf ("\n");
+  //Elegir un Pokemon, probablemente haya sido la decision mas importante de nuestra infancia.
   opcion = pedirNumero(0,2);
     if (opcion != 2) {
-      //Si no es Bulbasaur
+      //Si no eliges a Bulbasaur
       if(opcion == 0){
-        //Si es Charmander
+        //As elegido a Charmander
         pokemonUsuario = 0;
-        pokemonMaquina = 1;
         printf ("\n (-o-)============================(-o-)==============================(-o-) ");
         printf ("\n || Charmander siempre es una buena opcion, espero que estes preparado. ||");
         printf ("\n  ======================================================================= ");
         pausa();
+        // Limpiamos la pantalla, y en la funcion dominguero mostramos un pequeño mensaje,
+        // de nuestro enemigo, el Dominguero.
         system ("cls");
         dominguero ();
         pausa ();
+        // Mostramos la imagen de nuestro Charmander.
+        printf ("\n (-o-)============================(-o-) ");
+        printf ("\n || Charmander te eligo a ti!!!      ||");
+        printf ("\n  ==================================== ");
         Charmander ();
         pausa ();
       } else {
-          //Es Squirtle
+          //As elegido a Squirtle
           pokemonUsuario = 1;
-          pokemonMaquina = 2;
           printf ("\n (-o-)============================(-o-)==============================(-o-) ");
           printf ("\n || Squirtle, no esta mal, espero que estes preparado.                  ||");
           printf ("\n  ======================================================================= ");
           system ("cls");
           dominguero ();
           pausa ();
+          // Mostramos la imagen de nuestro Squirtle.
+          printf ("\n (-o-)============================(-o-) ");
+          printf ("\n || Squirtle te eligo a ti!!!        ||");
+          printf ("\n  ==================================== ");
           Squirtle ();
+          pausa ();
         }
     } else {
         // As elegido a Bulbasaur
         pokemonUsuario = 2;
-        pokemonMaquina = 1;
-        printf ("\n (-o-)============================(-o-)==============================(-o-) ");
-        printf ("\n || - Te dije que solo tenias una oportunidad, y coges a Bulbasaur!?    ||");
-        printf ("\n || - Nadie coge a Bulbasaur! ese lleva en la pokeball casi una decada, ||");
-        printf ("\n ||   ni si quiera se si esta vivo.                                     ||");
-        printf ("\n || - En fin, suerte en tu camino..., te hara falta                     ||");
-        printf ("\n  ======================================================================= ");
+        printf ("\n (-o-)===========================(-o-)==============================(-o-) ");
+        printf ("\n ||  Te dije que solo tenias una oportunidad, y coges a Bulbasaur!?    ||");
+        printf ("\n ||  Nadie coge a Bulbasaur! ese lleva en la pokeball desde que        ||");
+        printf ("\n ||  recuerdo, es mas ,ni si quiera se si esta vivo...                 ||");
+        printf ("\n ||  En fin, suerte en tu camino..., te hara falta.                    ||");
+        printf ("\n  ====================================================================== ");
         pausa ();
         //Dominguero
         system ("cls");
         dominguero ();
         pausa ();
+        // Mostramos la imagen de nuestro Bulbasaur.
+        printf ("\n (-o-)============================(-o-) ");
+        printf ("\n || Bulbasaur te eligo a ti!!!       ||");
+        printf ("\n  ==================================== ");
         Bulbasaur();
         pausa ();
       }
-      return pokemonUsuario, pokemonMaquina;
+      return pokemonUsuario;
 }
 
 // Función pedirNumero
@@ -190,6 +203,7 @@ void pausa () {
   system ("pause");
 }
 
+// Esta funcion no es mas que una amenaza hacia el jugador, para que comience la batalla.
 void dominguero () {
   printf ("\n (-o-)============================(-o-)================================(-o-) ");
   printf ("\n || Sales del laboratorio del profesor Oak                                ||");
@@ -201,6 +215,8 @@ void dominguero () {
   printf ("\n  ========================================================================= ");
 }
 
+// Movimientos de Charmander, cada movimiento le añade un plus de ataque a un ataque basico
+// que se elige aleatoriamente
 int movChar () {
   int ataque;
   printf ("\n\n\t(-o-)    Movimientos    (-o-)");
@@ -216,6 +232,7 @@ int movChar () {
   return ataque;
 }
 
+// Imagen de Pokemon
 void Charmander () {
   printf ("\n\n                  _.--\"\"`-.. ");
   printf ("\n                ,'          `. ");
@@ -252,9 +269,11 @@ void Charmander () {
   printf ("\n       \"\"--'---\"\"\"\"\"\'        `' '! |! / ");
   printf ("\n                               `\" \" -' ");
   printf ("\n ");
-  printf ("\n (-o-)================== Charmander! ==================(-o-) ");
+  printf ("\n (-o-)================ Char! Char! Charmander! ============(-o-) ");
 }
 
+// Movimientos de Squirtle, al igual que el anterior se le añade un plus de ataque,
+// ademas la opcion 0 "Descansar" nos da un extra de vida.
 int movSquir () {
   int ataque;
   printf ("\n\n(-o-)    Movimientos    (-o-)");
@@ -309,6 +328,7 @@ void Squirtle () {
   printf ("\n (-o-)================== Squirtle! ==================(-o-) ");
 }
 
+// Movimientos e imagen de bulbasur.
 int movBulba () {
   int ataque;
   printf ("\n\n\t(-o-)    Movimientos    (-o-)");
@@ -371,21 +391,45 @@ int obtenerNumeroAleatorio (int minimo, int maximo) {
  return numero;
 }
 
-int movimientos() {
-
+// Esta funcion se utiliza en el momento de la batalla, y es la encarda de indicar
+// que movimientos de ataque de los anteriormente mostrados se imprimira por pantalla,
+// esto se hace con un simple switch e indicandole, el numero del pokemon elegido.
+int movimientos(int pokemonUsuario) {
+  switch (pokemonUsuario) {
+    // Charmander
+    case 0:
+      movChar();
+    break;
+    // Squirtel
+    case 1:
+      movSquir();
+    break;
+    // Bulbasur
+    case 2:
+      movBulba();
+    break;
+  }
 }
 
+// Funcion Combate, es el bucle que da entido al juego, es la funcion mas compleja del programa.
+// Para comenzar indicamos el pokemon que ha elegido el usuario, y al que le ha tocado a la maquina.
 void Combate (int pokemonUsuario, int pokemonMaquina){
+  // Establecemos unos turnos de ataque aleatorios para saber quien empieza.
   int turno = obtenerNumeroAleatorio(0,1);
+  // Añadimos una cantidad de vida tanto nuestra como la del Dominguero, ademas de
+  // una variable quitavida que ira restando en cada ataque enemigo una cantidad aleatoria.
   int vidaUsuario, vidaMaquina, quitavida;
   vidaUsuario = 100;
   vidaMaquina = 100;
-  int ataquebasic = 10;
   while (vidaUsuario > 0 && vidaMaquina > 0) {
     if (turno == 1) {
       quitavida = obtenerNumeroAleatorio(10,35);
-      int ataque = movChar();
-      switch (ataque){
+      int ataque = movimientos(pokemonUsuario);
+      // En es switch se suma el numero aleatorio obtenido a un numero fijo por
+      // la eleccion de un ataque entre los diferentes movimientos.
+      switch (ataque) {
+        // En el caso, donde el pokemon "descansa", el numero aleatorio se suma
+        // a la vida de nuestro pokemon.
         case 0:
           vidaUsuario = vidaUsuario + quitavida;
           break;
@@ -402,22 +446,33 @@ void Combate (int pokemonUsuario, int pokemonMaquina){
           vidaMaquina = vidaMaquina - quitavida + 10;
           break;
       }
+      // Mostramos el daño realizado y la cantidad de vida que tenemos y la
+      // que aun le queda a nuestro contrincante.
       printf ("\n\n (-o-)============ Tu turno ================(-o-)");
-      printf ("\n || %d de ataque.                              ||",quitavida);
-      printf ("\n || Dominguero tiene %d de vida.               ||",vidaMaquina);
+      printf ("\n || Tu pokemon tiene %d de vida.               ||",vidaUsuario);
+      printf ("\n || Inflinque un ataque de %d .                ||",quitavida);
+      printf ("\n || A Dominguero aun le queda %d de vida.      ||",vidaMaquina);
       printf ("\n (-o-)======================================(-o-)");
+      // Cambiamos el turno, para que juegue la maquina.
       turno = 0;
+      // Hacemos una pausa para leer la informacion mostrada.
       pausa();
     } else {
+      // Mostramos la vida que tiene, el daño que nos hacen, y la cantidad de vida
+      // que tienen nuestro pokemon.
       quitavida = obtenerNumeroAleatorio(10,35);
       vidaUsuario = vidaUsuario - quitavida;
       printf ("\n\n (-o-)=========== Dominguero ===============(-o-)");
-      printf ("\n || %d de ataque.                              ||",quitavida);
-      printf ("\n || Tienes %d vida.                            ||",vidaUsuario);
+      printf ("\n || Dominguero tiene %d puntos de vida         ||",vidaMaquina);
+      printf ("\n || Y hace una ataque de %d puntos.            ||",quitavida);
+      printf ("\n || A tu pokemon le %d puntos de vida.         ||",vidaUsuario);
       printf ("\n (-o-)======================================(-o-)");
+      // Volvemos a cambiar el turno al jugador.
       turno = 1;
       pausa();
     }
+    // Estas son dos funciones basicas que nos muestran un mensaje por pantalla
+    // al final del combate, cuando una de las dos vidas ha llegado a menos de 0.
   if (vidaUsuario <= 0) {
     perdedor();
     }
@@ -426,13 +481,23 @@ void Combate (int pokemonUsuario, int pokemonMaquina){
     }
   }
 }
-
+// Mensajes de victoria o derrota
 void ganador(){
-  printf("\n You Win!!!");
+  printf ("\n\n (-o-)============= Victoria!!! ===============(-o-)");
+  printf ("\n || Si puedes vencer a un Dominguero, no hay     ||");
+  printf ("\n || nada que se te resista, enhorabuena.         ||");
+  printf ("\n ||                                              ||");
+  printf ("\n || Gracias por jugar :)                         ||");
+  printf ("\n (-o-)========================================(-o-)");
   pausa();
 }
 
 void perdedor() {
-  printf("\n You Lose!!!");
+  printf ("\n\n (-o-)============= Derrota!!! ===============(-o-)");
+  printf ("\n || En el mundo pokemon aun te queda mucho que   ||");
+  printf ("\n || aprender, mas suerte en la proxima partida.  ||");
+  printf ("\n ||                                              ||");
+  printf ("\n || Gracias por jugar :)                         ||");
+  printf ("\n (-o-)========================================(-o-)");
   pausa();
 }
