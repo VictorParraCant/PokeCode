@@ -13,6 +13,9 @@ void dominguero ();
 void Charmander ();
 void Squirtle ();
 void Bulbasaur ();
+void Raichu ();
+void Onix ();
+void Charizard ();
 int movChar ();
 int movSquir ();
 int movBulba ();
@@ -20,6 +23,9 @@ int movimientos();
 void Combate (int pokemonUsuario, int pokemonMaquina);
 void perdedor();
 void ganador();
+void torneo();
+void ganadorTorneo ();
+void perdedorTorneo();
 
 // Funion Principal
 int main (int argc, char *argv[]) {
@@ -33,14 +39,18 @@ int main (int argc, char *argv[]) {
 	   //Muestra el menu del juego.
     opcionMenu = menu();
       if (opcionMenu != 0) {
-        //En las siguentes funciones: Introduccion a la historia, nombre de usuario y eleccion de pokemon.
-        bienvenida ();
-        // Esta variable guarda el pokemon que elige el jugador.
-        int query_pokemonUsuario = eligePokemon ();
-        // Esta guarda el un pokemon aleatorio para la maquina.
-        int query_pokemonMaquina = obtenerNumeroAleatorio(0,2);
-        // En esta funcion comienza el bucle que da sentido al juego, como su nombre indica es el combate Pokemon.
-        Combate ( query_pokemonUsuario, query_pokemonMaquina );
+        if (opcionMenu == 1) {
+          //En las siguentes funciones: Introduccion a la historia, nombre de usuario y eleccion de pokemon.
+          bienvenida ();
+          // Esta variable guarda el pokemon que elige el jugador.
+          int query_pokemonUsuario = eligePokemon ();
+          // Esta guarda el un pokemon aleatorio para la maquina.
+          int query_pokemonMaquina = obtenerNumeroAleatorio(0,2);
+          // En esta funcion comienza el bucle que da sentido al juego, como su nombre indica es el combate Pokemon.
+          Combate ( query_pokemonUsuario, query_pokemonMaquina );
+        } else {
+          torneo();
+        }
       }
     }
     // Pausa y final del programa.
@@ -71,12 +81,14 @@ int menu () {
 
   printf ("\n\n\t\t\t ======(-o-)======");
   printf ("\n\t\t\t||  1.- Jugar.   ||");
+  printf ("\n\t\t\t||  2.- Torneo.  ||");
   printf ("\n\t\t\t||  0.- Salir.   ||");
   printf ("\n\t\t\t =================");
   printf("\n");
 
+
   // Para la lectura de la opción del usuario usamos otra funcion.
-  opcion = pedirNumero (0,1);
+  opcion = pedirNumero (0,2);
 	return opcion;
 }
 
@@ -127,6 +139,11 @@ int eligePokemon () {
         // de nuestro enemigo, el Dominguero.
         system ("cls");
         dominguero ();
+        printf ("\n\n (-o-)============================(-o-) ");
+        printf ("\n || Dominguero elige a Squirtle.     ||");
+        printf ("\n  ==================================== ");
+        printf("\n");
+        Squirtle ();
         pausa ();
         // Mostramos la imagen de nuestro Charmander.
         printf ("\n (-o-)============================(-o-) ");
@@ -142,6 +159,11 @@ int eligePokemon () {
           printf ("\n  ======================================================================= ");
           system ("cls");
           dominguero ();
+          printf ("\n\n (-o-)============================(-o-) ");
+          printf ("\n || Dominguero elige a Bulbasaur .   ||");
+          printf ("\n  ==================================== ");
+          printf("\n");
+          Bulbasaur();
           pausa ();
           // Mostramos la imagen de nuestro Squirtle.
           printf ("\n (-o-)============================(-o-) ");
@@ -163,6 +185,11 @@ int eligePokemon () {
         //Dominguero
         system ("cls");
         dominguero ();
+        printf ("\n\n (-o-)============================(-o-) ");
+        printf ("\n || Dominguero elige a Bulbasaur .    ||");
+        printf ("\n  ==================================== ");
+        printf("\n");
+        Charmander();
         pausa ();
         // Mostramos la imagen de nuestro Bulbasaur.
         printf ("\n (-o-)============================(-o-) ");
@@ -224,7 +251,7 @@ int movChar () {
   printf ("\n\t||    1.- Cola latigo      ||");
   printf ("\n\t||    2.- Placaje          ||");
   printf ("\n\t||    3.- Ascuas           ||");
-  printf ("\n\t||    4.- Morder           ||");
+  printf ("\n\t||    4.- Mordisco         ||");
   printf ("\n\t =========================== ");
   printf ("\n\t||    0.- Descansar        ||");
   printf ("\n\t =========================== ");
@@ -378,6 +405,132 @@ void Bulbasaur () {
   printf ("\n (-o-)================== Bulbasaur! ==================(-o-) ");
 
 }
+void Raichu() {
+printf ("\n ");
+printf ("\n                                        _,--\"\"`---...__ ");
+printf ("\n                            _.---\"\"\"\"`-\'.   .-\"\"\"\'`-.._`-._ ");
+printf ("\n                _,.-----.,-\"         .\". `-.           \"---`. ");
+printf ("\n             _,\' _,.-..,\'__          `.\'  ,-`...._      ,\"\"\'\'`-. ");
+printf ("\n           ,\' ,-\'     / (  .   ,-.       |    `.  `-._  .       `. ");
+printf ("\n         ,\',-\"       /   `\"    `\"\'       \'      .    _`. \\ ");
+printf ("\n       ,\',\'       ,-\'7--.                 `.__.\"|   ( ` `j ");
+printf ("\n      \'.:--.    ,\'   |   .       |\\             \'    `--\' ");
+printf ("\n     /.     | ,\'     |   |       `\'            . ");
+printf ("\n     \'       |\',\".    |._,\'                     `      _.--\"\"\"\"\"-._ ");
+printf ("\n    \'.          `-..\'    `.                      ,  \\  ,-\' _.-\"\"\"\"\"-. `. ");
+printf ("\n     ` `                   F  -.                 /    ,\' .-\'          `  ` ");
+printf ("\n      \\ `                 j     `.              ,-.   . /               . ` ");
+printf ("\n         `.               |     .-`.           .  \'-.  V                 . ` ");
+printf ("\n       `   `.      .      | .    \\  \\         j      \\/|                  \' . ");
+printf ("\n        .    `.    |`.    |-.`._/`   .        |    ,\'  A                  | | ");
+printf ("\n         \\     `. F   \\   |--`  \"._  |        `-.-\"   / .                 | | ");
+printf ("\n          \\      -\'    `. |        `\"\'                  |                 F \' ");
+printf ("\n           \\             `+`.                           |                / . ");
+printf ("\n            \\              .-`                     .    j               / , ");
+printf ("\n             \\              \\   `.               .\'    /               \' . ");
+printf ("\n              \\       |`._   \\    `-.._        ,\'    ,\'              ,\'.\' ");
+printf ("\n               \'      |   `.  `.       `<`\"\"\"\"\'    .\'             _,\'.\' ");
+printf ("\n                `     |     `-. `._      )   `.     .          _.\'_.\' ");
+printf ("\n                 `    |        `--/     /`-._  .     `.___..--\'_.\" ");
+printf ("\n                  `   |          /     /._   `\"\"`.     `. _,.-\" ");
+printf ("\n                   `  |         /     /   `--.....`.     `._ ");
+printf ("\n                    ` |       ,\'     /              .\"\"\"\"\'  `. ");
+printf ("\n                     `\'      , `-..,7                `    . `.`. ");
+printf ("\n                            .       \'                 `.   \\  `v ");
+printf ("\n                           j.  ,   /                    `.._L_.\' ");
+printf ("\n                           || .   / ");
+printf ("\n                           `\"-\'__/ ");
+printf ("\n ");
+printf ("\n (-o-)============================= Raichu! =============================(-o-) ");
+}
+
+void Onix() {
+printf ("\n ");
+printf ("\n                                                       _ ");
+printf ("\n                                       ___            | | ");
+printf ("\n                                   .-\"\'   `...._      | | ");
+printf ("\n                      _,--\"\'-.   ,\' .           `.    | | ");
+printf ("\n                    .\'       ,`,\'    \\            `.  | | ");
+printf ("\n                  ,\'.      .\',\'       \\            | j  | ");
+printf ("\n           __,..,\'   `----\"  `         \\       _..-+.`  |.. ");
+printf ("\n        ,\'\"     .             \'._  ___...-._ ,\'     |   |  `--. ");
+printf ("\n       /       _|              | `\"        .\'       |   |      `. ");
+printf ("\n      /`  _.-`\'  ._..----\"\"`._ |         ,\'         |   |        . ");
+printf ("\n     | .-\"         `-._    _,.\' `.     .\'          j    |         `. ");
+printf ("\n  ,-\"\"\"--..._       |  \'`\"\"       `-../\\     _,\"\'\'\"|    |.._       ,| ");
+printf ("\n /    \'.     `\"----,\'                 ` \'._,\'      |   j    `.   .\' | ");
+printf ("\n/_.-\'\"  `-.___..-.\"                    \\ ,\'   \\    |   \'    | `.\'   \' ");
+printf ("\n`                |                    _.\'          |  |,_   \'   `. / ");
+printf ("\n .        _______|                 .-\'    |.       `. \'           | ");
+printf ("\n  `...---\"     .-\'               .\'       | `.                 ,  \' ");
+printf ("\n  ,\'._     _,-\"                  `        |  ,`.  ,  .    _.-\'|    `. ");
+printf ("\n .    `\"\"-\'    `.                 \\       `.....`.     .-\',   |      . ");
+printf ("\n |             _,|                 ._ --.        |     \'\"--...       \' ");
+printf ("\n  `.--\"`.....-\" ,                    /\".`        |   |        _____,\' ");
+printf ("\n    .       | .\'_                   /   \\        |  j       \"\'_,..\' ");
+printf ("\n     /`-...-+\"   `.                 \'   .\'.__ -..\'  |_,..   ,\'  | ");
+printf ("\n    \'          ____.                 \\  |    \"`-..___,....-.    \' ");
+printf ("\n    .     _.\"\"\'   |                  `. .                 / .-\' ");
+printf ("\n     `. .\'       .._                   \\ \\               / / ");
+printf ("\n       `-._   _.'   `.                  \\.--......____ .\' / ");
+printf ("\n         .\'`\"\"    .\'  .                  .            \'_.\' ");
+printf ("\n         |       /    |____               `\"._     _,-\"      ,-\'\"\' ");
+printf ("\n          `. _.,\'     |    `.                 `--\"\'       _.--,.\' ");
+printf ("\n            `\'--.__,.\"       |                          ,\' .\' | ");
+printf ("\n                  |   ,.._   |\"--._                  ,-+-.\'  / ");
+printf ("\n                   `..\'    ``.\'   ,.`.     _..__.-\"\"\"-.__.\'\\\"\' ");
+printf ("\n                      `----.,\"    \'   .--..\'   _..`-../:  _,\' ");
+printf ("\n                             .    /  .\'  _.\'\\.-\"  |     \'-\" ");
+printf ("\n                              \"--+--\"`..\'   |.   ,^.__,\' ");
+printf ("\n                                       `---\"  `-\" ");
+printf ("\n ");
+printf ("\n (-o-)============================ Onix! ==========================(-o-) ");
+}
+
+void Charizard(){
+printf ("\n ");
+printf ("\n                   .\"-,.__ ");
+printf ("\n                   `.     `.  , ");
+printf ("\n                .--\'  .._,\'\"-\' `. ");
+printf ("\n               .    .\'         `\' ");
+printf ("\n              `.   /          ,\' ");
+printf ("\n                `  \'--.   ,-\"\' ");
+printf ("\n                 `\"`   |  \\ ");
+printf ("\n                    -. \\, | ");
+printf ("\n                     `--Y.\'      ___. ");
+printf ("\n                          \\     L._, \\ ");
+printf ("\n                _.,        `.   <  <\\                _ ");
+printf ("\n              ,' '           `, `.   | \\            ( ` ");
+printf ("\n           ../, `.            `  |    .\\`.           \\ \\_ ");
+printf ("\n          ,\' ,..  .           _.,\'    ||\\l            )  \'\". ");
+printf ("\n         , ,\'   \\           ,\'.-.`-._,\'  |           .  _._`. ");
+printf ("\n       ,\' /      \\ \\        `\' \' `--/   | \\          / /   ..\\ ");
+printf ("\n     .\'  /        \\ .         |\\__ - _ ,\'` `        / /     `.`. ");
+printf ("\n     |  \'          ..         `-...-\"  |  `-\'      / /        . `. ");
+printf ("\n     | /           |L__           |    |          / /          `. `. ");
+printf ("\n    , /            .   .          |    |         / /             ` ` ");
+printf ("\n   / /          ,. ,`._ `-_       |    |  _   ,-\' /               ` \\ ");
+printf ("\n  / .           \\\"`_/. `-_ \\_,.  ,\'    +-\' `-\'  _,        ..,-.    \\`. ");
+printf ("\n .  \'         .-f    ,\'   `    \'.       \\__.---\'     _   .\'   \'     \\ \\ ");
+printf ("\n \' /          `.\'    l     .\' /          \\..      ,_|/   `.  ,\'`     L` ");
+printf ("\n |\'      _.-\"\"` `.    \\ _,\'  `            \\ `.___`.\'\"`-.  , |   |    | \\ ");
+printf ("\n ||    ,\'      `. `.   \'       _,...._        `  |    `/ \'  |   \'     .| ");
+printf ("\n ||  ,\'          `. ;.,.---\' ,\'       `.   `.. `-\'  .-\' /_ .\'    ;_   || ");
+printf ("\n || \'              V      / /           `   | `   ,\'   ,\' \'.    !  `. || ");
+printf ("\n ||/            _,-------7 \'              . |  `-\'    l         /    `|| ");
+printf ("\n . |          ,\' .-   ,\' ||               | .-.        `.      .\'     || ");
+printf ("\n  `\'        ,\'    `\".\'    |               |    `.        \'. -.\'       `\' ");
+printf ("\n           /      ,\'      |               |,\'    \\-.._,.\'/\' ");
+printf ("\n           .     /        .               .       \\    .\'\' ");
+printf ("\n         .`.    |         `.             /         :_,\'.\' ");
+printf ("\n           \\ `...\\   _     ,\'-.        .\'         /_.-\' ");
+printf ("\n            `-.__ `,  `\'   .  _.>----\'\'.  _  __  / ");
+printf ("\n                 .\'        /\"\'          |  \"\'   \'_ ");
+printf ("\n                /_|.-\'\\ ,\".             \'.\'`__\'-( \\ ");
+printf ("\n                  / ,\"\'\"\\,\'               `/  `-.|\"  ");
+printf ("\n ");
+printf ("\n (-o-)=========================== Charizard! ============================(-o-) ");
+}
 
 // Función obtenerNumeroAleatorio
 // Función para obtener un número aleatorio entre un mínimo y un  máximo dado
@@ -434,24 +587,28 @@ void Combate (int pokemonUsuario, int pokemonMaquina){
           vidaUsuario = vidaUsuario + quitavida;
           break;
         case 1:
-          vidaMaquina = vidaMaquina - quitavida + 2;
+          quitavida = quitavida + 1;
+          vidaMaquina = vidaMaquina - quitavida;
           break;
         case 2:
-          vidaMaquina = vidaMaquina - quitavida + 5;
+          quitavida = quitavida + 3;
+          vidaMaquina = vidaMaquina - quitavida;
           break;
         case 3:
-          vidaMaquina = vidaMaquina - quitavida + 7;
+          quitavida = quitavida + 5;
+          vidaMaquina = vidaMaquina - quitavida;
           break;
         case 4:
-          vidaMaquina = vidaMaquina - quitavida + 10;
+          quitavida = quitavida + 7;
+          vidaMaquina = vidaMaquina - quitavida;
           break;
       }
       // Mostramos el daño realizado y la cantidad de vida que tenemos y la
       // que aun le queda a nuestro contrincante.
       printf ("\n\n (-o-)============ Tu turno ================(-o-)");
       printf ("\n || Tu pokemon tiene %d de vida.               ||",vidaUsuario);
-      printf ("\n || Inflinque un ataque de %d .                ||",quitavida);
-      printf ("\n || A Dominguero aun le queda %d de vida.      ||",vidaMaquina);
+      printf ("\n || Inflinqe un ataque de %d.                  ||",quitavida);
+      printf ("\n || A Dominguero le quedan %d de vida.         ||",vidaMaquina);
       printf ("\n (-o-)======================================(-o-)");
       // Cambiamos el turno, para que juegue la maquina.
       turno = 0;
@@ -464,8 +621,8 @@ void Combate (int pokemonUsuario, int pokemonMaquina){
       vidaUsuario = vidaUsuario - quitavida;
       printf ("\n\n (-o-)=========== Dominguero ===============(-o-)");
       printf ("\n || Dominguero tiene %d puntos de vida         ||",vidaMaquina);
-      printf ("\n || Y hace una ataque de %d puntos.            ||",quitavida);
-      printf ("\n || A tu pokemon le %d puntos de vida.         ||",vidaUsuario);
+      printf ("\n || Y hace un ataque de %d puntos.             ||",quitavida);
+      printf ("\n || A tu pokemon le queda %d puntos de vida.   ||",vidaUsuario);
       printf ("\n (-o-)======================================(-o-)");
       // Volvemos a cambiar el turno al jugador.
       turno = 1;
@@ -499,5 +656,237 @@ void perdedor() {
   printf ("\n ||                                              ||");
   printf ("\n || Gracias por jugar :)                         ||");
   printf ("\n (-o-)========================================(-o-)");
+  pausa();
+}
+
+// La funcion torneo se corresponde a este modo de juego, esta funcion
+// es igual que la de combate, la unica diferencia es que se han añadido unos
+// contadores de victorias, y que las partidas siempre van en el mismo orden,
+// ya que en el modo torneo son 3 combates seguidos, ademas el nivel es mas
+// dificil puesto que al escoger movimiento, no se añade nada al ataque.
+void torneo(){
+  // Presentacion de torneo.
+  system ("cls");
+  printf ("\n\n (-o-)=============== Torneo ================(-o-)");
+  printf ("\n || Si te crees tan bueno como para desafiar a  ||");
+  printf ("\n || los mejores, estas en el sitio adecuado.    ||");
+  printf ("\n ||                                             ||");
+  printf ("\n || Ya no hay vuelta atras, combatiras al       ||");
+  printf ("\n || mejor de 3 combates contra el lider del     ||");
+  printf ("\n || gimnasio: 'Chico de fuego'.                 ||");
+  printf ("\n ||                                             ||");
+  printf ("\n || Suerte amigo!                               ||");
+  printf ("\n (-o-)=======================================(-o-)");
+  pausa();
+  system ("cls");
+  int turno = 0;
+  int contadorVidaUsuario, contadorVidaMaquina;
+  int vidaUsuario, vidaMaquina, quitavida;
+  contadorVidaUsuario = 3;
+  contadorVidaMaquina = 3;
+  int contadorCombates = 3;
+  //Este bucle es que hace que el torneo acabe cuando no nos quedan vidas a nosotros o
+  // a FireBoy.
+  while (contadorVidaUsuario > 0 && contadorVidaMaquina > 0 ) {
+    // Un if para controlar en que combate esta el bucle
+    if (contadorCombates == 3) {
+      vidaUsuario = 100;
+      vidaMaquina = 100;
+      printf ("\n\n (-o-)=========== Chico de fuego ============(-o-)");
+      printf ("\n || Estas muy lejos de tu casa chico, pero ya   ||");
+      printf ("\n || que estas aqui, divirtamonos un rato...     ||");
+      printf ("\n || Adelante Onix!!!                            ||");
+      printf ("\n (-o-)=======================================(-o-)");
+      Onix ();
+      pausa();
+      printf ("\n\n (-o-)=======================================(-o-)");
+      printf ("\n || Empiezas con Bulbasaur.                     ||");
+      printf ("\n (-o-)=======================================(-o-)");
+      Bulbasaur();
+      pausa();
+      while (vidaUsuario > 0 && vidaMaquina > 0) {
+        if (turno == 1) {
+          printf ("\n Te toca a ti.");
+          movBulba();
+          quitavida = obtenerNumeroAleatorio(10,35);
+          vidaMaquina = vidaMaquina - quitavida;
+          printf ("\n\n (-o-)============ Tu turno ================(-o-)");
+          printf ("\n || Tu pokemon tiene %d de vida.               ||",vidaUsuario);
+          printf ("\n || Inflinqe un ataque de %d.                  ||",quitavida);
+          printf ("\n || A Chico de fuego le quedan %d de vida.     ||",vidaMaquina);
+          printf ("\n (-o-)======================================(-o-)");
+          pausa();
+          turno = 0;
+          } else {
+            quitavida = obtenerNumeroAleatorio(10,35);
+            vidaUsuario = vidaUsuario - quitavida;
+            printf ("\n\n (-o-)=========== Chico de fuego ============(-o-)");
+            printf ("\n || Chico de fuego tiene %d puntos de vida     ||",vidaMaquina);
+            printf ("\n || Y hace un ataque de %d puntos.             ||",quitavida);
+            printf ("\n || A tu pokemon le queda %d puntos de vida.   ||",vidaUsuario);
+            printf ("\n (-o-)======================================(-o-)");
+            pausa();
+            turno = 1;
+          }
+        if (vidaUsuario <= 0) {
+          printf ("\n\n (-o-)=========== Chico de fuego ============(-o-)");
+          printf ("\n || Jajaja! Ni si quiera has podido con el      ||");
+          printf ("\n || primer combate. Espero que te gusten las    ||");
+          printf ("\n || chispas. Adelante Raichu!!!                 ||");
+          printf ("\n (-o-)=======================================(-o-)");
+          contadorVidaUsuario = contadorVidaUsuario - 1;
+          contadorCombates = contadorCombates - 1;
+        }
+        if (vidaMaquina <= 0){
+          printf ("\n\n (-o-)=========== Chico de fuego ============(-o-)");
+          printf ("\n || Bueno, en el primer combate nunca me        ||");
+          printf ("\n || esfuerzo. Preparate para las chispas.       ||");
+          printf ("\n || Adelante Raichu!!!                          ||");
+          printf ("\n (-o-)=======================================(-o-)");
+          contadorVidaMaquina = contadorVidaMaquina - 1;
+          contadorCombates = contadorCombates - 1;
+        }
+      }
+      if (contadorCombates == 2) {
+        Raichu();
+        pausa();
+        printf ("\n\n (-o-)=======================================(-o-)");
+        printf ("\n || Eliges a Charmander.                        ||");
+        printf ("\n (-o-)=======================================(-o-)");
+        Charmander();
+        pausa();
+        vidaUsuario = 100;
+        vidaMaquina = 100;
+        while (vidaUsuario > 0 && vidaMaquina > 0) {
+          if (turno == 1) {
+            printf ("\n Te toca a ti.");
+            movChar();
+            quitavida = obtenerNumeroAleatorio(10,35);
+            vidaMaquina = vidaMaquina - quitavida;
+            printf ("\n\n (-o-)============ Tu turno ================(-o-)");
+            printf ("\n || Tu pokemon tiene %d de vida.               ||",vidaUsuario);
+            printf ("\n || Inflinqe un ataque de %d.                  ||",quitavida);
+            printf ("\n || A Chico de fuego le quedan %d de vida.     ||",vidaMaquina);
+            printf ("\n (-o-)======================================(-o-)");
+            pausa();
+            turno = 0;
+            } else {
+              quitavida = obtenerNumeroAleatorio(10,35);
+              vidaUsuario = vidaUsuario - quitavida;
+              printf ("\n\n (-o-)=========== Chico de fuego ===========(-o-)");
+              printf ("\n || Chico de fuego tiene %d puntos de vida     ||",vidaMaquina);
+              printf ("\n || Y hace un ataque de %d puntos.             ||",quitavida);
+              printf ("\n || A tu pokemon le queda %d puntos de vida.   ||",vidaUsuario);
+              printf ("\n (-o-)======================================(-o-)");
+              pausa();
+              turno = 1;
+            }
+          if (vidaUsuario <= 0) {
+            printf ("\n\n (-o-)=========== Chico de fuego ============(-o-)");
+            printf ("\n || Esto se pone interesante no crees,          ||");
+            printf ("\n || no pensaba usarlo, pero le vendra bien un   ||");
+            printf ("\n || poco de ejercicio.                          ||");
+            printf ("\n (-o-)=======================================(-o-)");
+            contadorVidaUsuario = contadorVidaUsuario - 1;
+            contadorCombates = contadorCombates - 1;
+          }
+          if (vidaMaquina <= 0){
+            printf ("\n\n (-o-)=========== Chico de fuego ============(-o-)");
+            printf ("\n || Buen combate, pocos llegan hasta aqui,      ||");
+            printf ("\n || pero menos son los que consiguen ganar a:   ||");
+            printf ("\n || Charizard!!!                                ||");
+            printf ("\n (-o-)=======================================(-o-)");
+            contadorVidaMaquina = contadorVidaMaquina - 1;
+            contadorCombates = contadorCombates - 1;
+          }
+        }
+      }
+      if(contadorCombates == 1){
+        Charizard();
+        pausa();
+        printf ("\n\n (-o-)=======================================(-o-)");
+        printf ("\n || Eliges a Squirtle.                        ||");
+        printf ("\n (-o-)=======================================(-o-)");
+        Squirtle();
+        pausa();
+        vidaUsuario = 100;
+        vidaMaquina = 100;
+        while (vidaUsuario > 0 && vidaMaquina > 0) {
+            if (turno == 1) {
+              printf ("\n Te toca a ti.");
+              movSquir();
+              quitavida = obtenerNumeroAleatorio(10,35);
+              int quitavidaCharizar = obtenerNumeroAleatorio(10,40);
+              vidaMaquina = vidaMaquina - quitavida;
+              printf ("\n\n (-o-)============ Tu turno ================(-o-)");
+              printf ("\n || Tu pokemon tiene %d de vida.               ||",vidaUsuario);
+              printf ("\n || Inflinqe un ataque de %d.                  ||",quitavida);
+              printf ("\n || A Chico de fuego le quedan %d de vida.     ||",vidaMaquina);
+              printf ("\n (-o-)======================================(-o-)");
+              pausa();
+              turno = 0;
+              } else {
+                int quitavidaCharizar = obtenerNumeroAleatorio(10,40);
+                quitavida = obtenerNumeroAleatorio(10,35);
+                vidaUsuario = vidaUsuario - quitavidaCharizar;
+                printf ("\n\n (-o-)=========== Chico de fuego ============(-o-)");
+                printf ("\n || Chico de fuego tiene %d puntos de vida     ||",vidaMaquina);
+                printf ("\n || Y hace un ataque de %d puntos.             ||",quitavidaCharizar);
+                printf ("\n || A tu pokemon le queda %d puntos de vida.   ||",vidaUsuario);
+                printf ("\n (-o-)======================================(-o-)");
+                pausa();
+                turno = 1;
+              }
+            if (vidaUsuario <= 0) {
+              printf ("\n\n (-o-)=========== Chico de fuego ============(-o-)");
+              printf ("\n || Esto se ha acabado chico, ya te dije        ||");
+              printf ("\n || nadie vence a mi Charizard.                 ||");
+              printf ("\n (-o-)=======================================(-o-)");
+              contadorVidaUsuario = contadorVidaUsuario - 1;
+              contadorCombates = contadorCombates - 1;
+            }
+            if (vidaMaquina <= 0){
+              printf ("\n\n (-o-)=========== Chico de fuego ============(-o-)");
+              printf ("\n || No puede ser! Mi Charizar derrotado por,    ||");
+              printf ("\n || por un... en fin he de admitir que lo has   ||");
+              printf ("\n || hecho bien.                                 ||");
+              printf ("\n (-o-)=======================================(-o-)");
+              contadorVidaMaquina = contadorVidaMaquina - 1;
+              contadorCombates = contadorCombates - 1;
+            }
+          }
+        }
+        // Cuando el contador de combates llega a 0 se decide quien a ganado
+        if (contadorCombates == 0){
+          if (contadorVidaUsuario < contadorVidaMaquina) {
+            perdedorTorneo();
+          } else {
+            ganadorTorneo();
+          }
+        }
+      }
+    }
+  }
+void ganadorTorneo () {
+  printf ("\n\n (-o-)=============== Chico de fuego ===============(-o-)");
+  printf ("\n || Enhorabuena! Eres de los pocos que ha conseguido   ||");
+  printf ("\n || vencerme, estas preparado para ir al proximo       ||");
+  printf ("\n || gimnasio pokemon.                                  ||");
+  printf ("\n ||                                                    ||");
+  printf ("\n || Podras encontrarlo en la isla de JAVA, aunque      ||");
+  printf ("\n || dicen que el programador aun no ha terminado de    ||");
+  printf ("\n || compilarlo, suerte en tu camino.                   ||");
+  printf ("\n (-o-)==============================================(-o-)");
+  pausa();
+}
+void perdedorTorneo () {
+  printf ("\n\n (-o-)=============== Chico de fuego ===============(-o-)");
+  printf ("\n || Ya sabia yo que por mucho que lo intentaras no     ||");
+  printf ("\n || conseguiras vencerme, ha estado bien, no te        ||");
+  printf ("\n || puedo dar la medalla del gimansio, pero toma,      ||");
+  printf ("\n || un 'pin' pa ti!                                    ||");
+  printf ("\n ||                                                    ||");
+  printf ("\n || Vuelve cuando estes preparado.                     ||");
+  printf ("\n (-o-)==============================================(-o-)");
   pausa();
 }
