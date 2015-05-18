@@ -35,8 +35,10 @@ int main (int argc, char *argv[]) {
   srand(time(NULL));
 
   int opcionMenu = 1;
-  for (;opcionMenu != 0;) {
-	   //Muestra el menu del juego.
+  int seguirJugando = 1;
+    // Mostrara el menu principal hasta el usuario eliga salir.
+    while ( seguirJugando == 1) {
+    //Muestra el menu del juego.
     opcionMenu = menu();
       if (opcionMenu != 0) {
         if (opcionMenu == 1) {
@@ -52,9 +54,15 @@ int main (int argc, char *argv[]) {
           torneo();
         }
       }
-    }
-    // Pausa y final del programa.
-    pausa ();
+    // Pausa y opcion de salir o volver a jugar.
+    printf ("\n\n\t\t ===========(-o-)==========");
+    printf ("\n\t\t||  1.- Volver a Jugar.   ||");
+    printf ("\n\t\t||  0.- Salir.            ||");
+    printf ("\n\t\t ==========================");
+    printf("\n");
+    scanf("%d", &seguirJugando);
+  }
+    // Final del programa.
     return 0;
 }
 
@@ -85,8 +93,7 @@ int menu () {
   printf ("\n\t\t\t||  0.- Salir.   ||");
   printf ("\n\t\t\t =================");
   printf("\n");
-
-
+  
   // Para la lectura de la opción del usuario usamos otra funcion.
   opcion = pedirNumero (0,2);
 	return opcion;
@@ -868,6 +875,7 @@ void torneo(){
     }
   }
 void ganadorTorneo () {
+  system ("cls");
   printf ("\n\n (-o-)=============== Chico de fuego ===============(-o-)");
   printf ("\n || Enhorabuena! Eres de los pocos que ha conseguido   ||");
   printf ("\n || vencerme, estas preparado para ir al proximo       ||");
@@ -880,6 +888,7 @@ void ganadorTorneo () {
   pausa();
 }
 void perdedorTorneo () {
+  system ("cls");
   printf ("\n\n (-o-)=============== Chico de fuego ===============(-o-)");
   printf ("\n || Ya sabia yo que por mucho que lo intentaras no     ||");
   printf ("\n || conseguiras vencerme, ha estado bien, no te        ||");
