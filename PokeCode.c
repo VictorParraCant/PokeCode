@@ -671,7 +671,7 @@ void perdedor() {
 // contadores de victorias, y que las partidas siempre van en el mismo orden,
 // ya que en el modo torneo son 3 combates seguidos, ademas el nivel es mas
 // dificil puesto que al escoger movimiento, no se añade nada al ataque.
-void torneo(){
+void torneo() {
   // Presentacion de torneo.
   system ("cls");
   printf ("\n\n (-o-)=============== Torneo ================(-o-)");
@@ -863,13 +863,13 @@ void torneo(){
             }
           }
         }
-        // Cuando el contador de combates llega a 0 se decide quien a ganado
-        if (contadorCombates == 0){
-          if (contadorVidaUsuario < contadorVidaMaquina) {
-            perdedorTorneo();
-          } else {
-            ganadorTorneo();
-          }
+      }
+      // Cuando el contador de combates llega a 0 se decide quien a ganado
+      if (contadorCombates == 0){
+        if (contadorVidaUsuario < contadorVidaMaquina) {
+          perdedorTorneo();
+        } else {
+          ganadorTorneo();
         }
       }
     }
