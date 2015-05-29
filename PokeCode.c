@@ -863,17 +863,20 @@ void torneo() {
             }
           }
         }
-      }
-      // Cuando el contador de combates llega a 0 se decide quien a ganado
-      if (contadorCombates == 0){
-        if (contadorVidaUsuario < contadorVidaMaquina) {
-          perdedorTorneo();
-        } else {
-          ganadorTorneo();
+        // Cuando el contador de combates llega a 0 se decide quien a ganado
+        if (contadorCombates == 0){
+          if (contadorVidaUsuario < contadorVidaMaquina) {
+              perdedorTorneo ();
+              return 0;
+          } else {
+              ganadorTorneo ();
+              return 0;
+          }
         }
       }
     }
   }
+
 void ganadorTorneo () {
   system ("cls");
   printf ("\n\n (-o-)=============== Chico de fuego ===============(-o-)");
@@ -887,6 +890,7 @@ void ganadorTorneo () {
   printf ("\n (-o-)==============================================(-o-)");
   pausa();
 }
+
 void perdedorTorneo () {
   system ("cls");
   printf ("\n\n (-o-)=============== Chico de fuego ===============(-o-)");
